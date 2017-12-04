@@ -1,0 +1,45 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="50dp"
+    android:paddingBottom="40dp"
+    tools:context="com.example.carina.haushaltsapp.HaushaltActivity">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/einkaufsliste"
+        android:id="@+id/button1"
+        android:layout_margin="15dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ausgaben"
+        android:id="@+id/button2"
+        android:layout_margin="15dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/to_do"
+        android:id="@+id/button3"
+        android:layout_margin="15dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notizen"
+        android:id="@+id/button4"
+        android:layout_margin="15dp"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

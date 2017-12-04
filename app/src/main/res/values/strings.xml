@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Haushaltsapp</string>
+    <string name="notizen">Notizen</string>
+    <string name="to_do">To-Do</string>
+    <string name="ausgaben">Ausgaben</string>
+    <string name="einkaufsliste">Einkaufsliste</string>
+</resources>
