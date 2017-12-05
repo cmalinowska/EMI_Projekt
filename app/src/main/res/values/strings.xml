@@ -4,4 +4,10 @@
     <string name="to_do">To-Do</string>
     <string name="ausgaben">Ausgaben</string>
     <string name="einkaufsliste">Einkaufsliste</string>
+
+    <string name="my_notes">Meine Notizen</string>
+    <string name="new_note">Neue Notiz</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="DeleteNote">Bist du sicher?</string>
 </resources>
+

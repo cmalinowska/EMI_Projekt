@@ -16,6 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+
+        <activity
+                android:name=".MyNotes"
+                android:screenOrientation="portrait"
+                android:label="@string/my_notes" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+            <activity
+                android:name=".DisplayNote"
+                android:screenOrientation="portrait"
+                android:label="Neue Notiz" />
+        </application>
 
 </manifest>
