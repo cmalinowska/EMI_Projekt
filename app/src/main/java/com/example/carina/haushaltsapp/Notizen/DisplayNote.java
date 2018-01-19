@@ -1,4 +1,4 @@
-package com.example.carina.haushaltsapp;
+package com.example.carina.haushaltsapp.Notizen;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.carina.haushaltsapp.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

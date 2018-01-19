@@ -1,4 +1,4 @@
-package com.example.carina.haushaltsapp;
+package com.example.carina.haushaltsapp.Notizen;
 
 import android.content.ContentValues;
 import android.content.Context;

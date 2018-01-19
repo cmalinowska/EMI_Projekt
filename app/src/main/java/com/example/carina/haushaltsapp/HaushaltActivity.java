@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.carina.haushaltsapp.Einkaufsliste.MyShopping;
+import com.example.carina.haushaltsapp.Notizen.MyNotes;
+import com.example.carina.haushaltsapp.ReggaeFeeling.Corc;
+
 import static com.example.carina.haushaltsapp.R.id.*;
 
 public class HaushaltActivity extends AppCompatActivity {
@@ -23,15 +27,16 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
         btnAusgaben = (Button) findViewById(button2);
         btnToDo = (Button) findViewById(button3);
         btnNotizen = (Button) findViewById(button4);
+        btnFun = (Button) findViewById(button5);
 
-        /*btnEinkauf.setOnClickListener(new View.OnClickListener() {
+        btnEinkauf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startEinkauf();
             }
         });
 
-        btnAusgaben.setOnClickListener(new View.OnClickListener() {
+        /*btnAusgaben.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startAusgaben();
@@ -51,15 +56,25 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
                 startNotizen();
             }
         });
+
+        btnFun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startFun();
+            }
+        });
     }
 
-    /** Start the Other Activities
+
+
+
 
      private void startEinkauf() {
         startActivity(
-         new Intent(this, Einkauf.class));
+         new Intent(this, MyShopping.class));
      }
 
+     /** Start the Other Activities
 
      private void startAusgaben() {
          startActivity(
@@ -78,5 +93,8 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
                 new Intent(this, MyNotes.class));
     }
 
-
+    private void startFun() {
+        startActivity(
+                new Intent(this, Corc.class));
+    }
 }

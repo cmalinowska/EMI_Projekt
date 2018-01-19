@@ -1,4 +1,4 @@
-package com.example.carina.haushaltsapp;
+package com.example.carina.haushaltsapp.Notizen;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.example.carina.haushaltsapp.R;
+
 //import android.support.design.widget.FloatingActionButton;
 
 public class MyNotes extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class MyNotes extends AppCompatActivity {
     CoordinatorLayout coordinatorLayout;
     SimpleCursorAdapter adapter;
     Snackbar snackbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +84,7 @@ public class MyNotes extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_notes, menu);
         this.menu = menu;
         return true;
     }

@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".HaushaltActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
-                android:name=".MyNotes"
+                android:name=".Notizen.MyNotes"
                 android:screenOrientation="portrait"
                 android:label="@string/my_notes" >
                 <intent-filter>
@@ -27,9 +27,19 @@
                 </intent-filter>
             </activity>
             <activity
-                android:name=".DisplayNote"
+                android:name=".Notizen.DisplayNote"
                 android:screenOrientation="portrait"
                 android:label="Neue Notiz" />
+
+        <activity
+            android:name=".Einkaufsliste.MyShopping"
+            android:label="@string/my_shopping" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         </application>
 
 </manifest>
