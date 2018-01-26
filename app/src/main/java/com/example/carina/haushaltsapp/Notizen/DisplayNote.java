@@ -83,9 +83,6 @@ public class DisplayNote extends AppCompatActivity {
         // Der SEND-Intent wird an den ShareActionProvider angehangen
         if (sAP != null ) {
             sAP.setShareIntent(shareIntent);
-        } else {
-            String LOG_TAG = DisplayNote.class.getSimpleName();
-            Log.d(LOG_TAG, "Kein ShareActionProvider vorhanden!");
         }
 
         return true;

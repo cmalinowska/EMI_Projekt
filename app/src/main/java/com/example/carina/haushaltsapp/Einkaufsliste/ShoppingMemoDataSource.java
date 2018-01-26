@@ -11,8 +11,6 @@ import java.util.List;
 
 public class ShoppingMemoDataSource {
 
-    private static final String LOG_TAG = ShoppingMemoDataSource.class.getSimpleName();
-
     private SQLiteDatabase database;
     private ShoppingMemoDbHelper dbHelper;
 
@@ -23,19 +21,18 @@ public class ShoppingMemoDataSource {
     };
 
     public ShoppingMemoDataSource(Context context) {
-        Log.d(LOG_TAG, "Unsere DataSource erzeugt jetzt den dbHelper.");
+
+        // DataSource erzeugt den dbHelper
         dbHelper = new ShoppingMemoDbHelper(context);
     }
 
     public void open() {
-        Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
         database = dbHelper.getWritableDatabase();
-        Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + database.getPath());
     }
 
     public void close() {
+        // Datenbank mit Hilfe des DbHelpers geschlossen
         dbHelper.close();
-        Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
     public ShoppingMemo createShoppingMemo(String product, int quantity) {
@@ -76,8 +73,6 @@ public class ShoppingMemoDataSource {
         database.delete(ShoppingMemoDbHelper.TABLE_SHOPPING_LIST,
                 ShoppingMemoDbHelper.COLUMN_ID + "=" + id,
                 null);
-
-        Log.d(LOG_TAG, "Eintrag gelöscht! ID: " + id + " Inhalt: " + shoppingMemo.toString());
     }
 
     public ShoppingMemo updateShoppingMemo(long id, String newProduct, int newQuantity) {
@@ -113,7 +108,6 @@ public class ShoppingMemoDataSource {
         while(!cursor.isAfterLast()) {
             shoppingMemo = cursorToShoppingMemo(cursor);
             shoppingMemoList.add(shoppingMemo);
-            Log.d(LOG_TAG, "ID: " + shoppingMemo.getId() + ", Inhalt: " + shoppingMemo.toString());
             cursor.moveToNext();
         }
 

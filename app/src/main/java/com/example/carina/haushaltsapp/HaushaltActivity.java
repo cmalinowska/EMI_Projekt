@@ -1,13 +1,11 @@
 package com.example.carina.haushaltsapp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import com.example.carina.haushaltsapp.Einkaufsliste.MyShopping;
 import com.example.carina.haushaltsapp.Notizen.MyNotes;
 import com.example.carina.haushaltsapp.ReggaeFeeling.Corc;
@@ -38,20 +36,6 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
             }
         });
 
-        /*btnAusgaben.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startAusgaben();
-            }
-        });
-
-        btnToDo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startToDoList();
-            }
-        });
-*/
         btnNotizen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,27 +53,10 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
     }
 
 
-
-
-
-     private void startEinkauf() {
+    private void startEinkauf() {
         startActivity(
          new Intent(this, MyShopping.class));
      }
-
-     /** Start the Other Activities
-
-     private void startAusgaben() {
-         startActivity(
-         new Intent(this, Ausgaben.class));
-     }
-
-
-     private void startToDoList() {
-         startActivity(
-         new Intent(this, ToDoList.class));
-     }
-     */
 
 
     private void startNotizen() {startActivity(

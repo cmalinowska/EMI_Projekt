@@ -38,7 +38,7 @@
 
         <activity
             android:name=".Einkaufsliste.MyShopping"
-            android:label="@string/my_shopping"
+            android:label="@string/einkaufsliste"
             android:parentActivityName=".HaushaltActivity" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HaushaltActivity"/>

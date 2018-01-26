@@ -1,7 +1,7 @@
 package com.example.carina.haushaltsapp.Einkaufsliste;
 
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
@@ -20,7 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
 
 import com.example.carina.haushaltsapp.R;
 
@@ -28,7 +27,6 @@ import java.util.List;
 
 public class MyShopping extends AppCompatActivity {
 
-    public static final String LOG_TAG = MyShopping.class.getSimpleName();
     private ShoppingMemoDataSource dataSource;
 
 
@@ -37,7 +35,6 @@ public class MyShopping extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_shopping);
 
-        Log.d(LOG_TAG, "Das Datenquellen-Objekt wird angelegt.");
         dataSource = new ShoppingMemoDataSource(this);
 
         activateAddButton();
@@ -59,19 +56,13 @@ public class MyShopping extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
-
-        Log.d(LOG_TAG, "Folgende Einträge sind in der Datenbank vorhanden:");
         showAllListEntries();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
         dataSource.close();
     }
 
@@ -173,7 +164,6 @@ public class MyShopping extends AppCompatActivity {
                             if (isChecked) {
                                 int postitionInListView = touchedShoppingMemosPositions.keyAt(i);
                                 ShoppingMemo shoppingMemo = (ShoppingMemo) shoppingMemosListView.getItemAtPosition(postitionInListView);
-                                Log.d(LOG_TAG, "Position im ListView: " + postitionInListView + " Inhalt: " + shoppingMemo.toString());
                                 dataSource.deleteShoppingMemo(shoppingMemo);
                             }
                         }
@@ -182,13 +172,11 @@ public class MyShopping extends AppCompatActivity {
                         break;
 
                     case R.id.cab_change:
-                        Log.d(LOG_TAG, "Eintrag ändern");
                         for (int i = 0; i < touchedShoppingMemosPositions.size(); i++) {
                             boolean isChecked = touchedShoppingMemosPositions.valueAt(i);
                             if (isChecked) {
                                 int postitionInListView = touchedShoppingMemosPositions.keyAt(i);
                                 ShoppingMemo shoppingMemo = (ShoppingMemo) shoppingMemosListView.getItemAtPosition(postitionInListView);
-                                Log.d(LOG_TAG, "Position im ListView: " + postitionInListView + " Inhalt: " + shoppingMemo.toString());
 
                                 AlertDialog editShoppingMemoDialog = createEditShoppingMemoDialog(shoppingMemo);
                                 editShoppingMemoDialog.show();
@@ -236,7 +224,6 @@ public class MyShopping extends AppCompatActivity {
                         String product = editTextNewProduct.getText().toString();
 
                         if ((TextUtils.isEmpty(quantityString)) || (TextUtils.isEmpty(product))) {
-                            Log.d(LOG_TAG, "Ein Eintrag enthielt keinen Text. Daher Abbruch der Änderung.");
                             return;
                         }
 
@@ -244,9 +231,6 @@ public class MyShopping extends AppCompatActivity {
 
                         // An dieser Stelle schreiben wir die geänderten Daten in die SQLite Datenbank
                         ShoppingMemo updatedShoppingMemo = dataSource.updateShoppingMemo(shoppingMemo.getId(), product, quantity);
-
-                        Log.d(LOG_TAG, "Alter Eintrag - ID: " + shoppingMemo.getId() + " Inhalt: " + shoppingMemo.toString());
-                        Log.d(LOG_TAG, "Neuer Eintrag - ID: " + updatedShoppingMemo.getId() + " Inhalt: " + updatedShoppingMemo.toString());
 
                         showAllListEntries();
                         dialog.dismiss();
