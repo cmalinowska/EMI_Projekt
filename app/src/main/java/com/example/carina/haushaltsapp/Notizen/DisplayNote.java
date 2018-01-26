@@ -6,11 +6,15 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 
 import com.example.carina.haushaltsapp.R;
 
@@ -27,6 +31,7 @@ public class DisplayNote extends AppCompatActivity {
     int id_To_Update = 0;
     Snackbar snackbar;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewnotepad);
@@ -39,9 +44,6 @@ public class DisplayNote extends AppCompatActivity {
         if (extras != null) {
             int Value = extras.getInt("id");
             if (Value > 0) {
-                /*snackbar = Snackbar
-                        .make(coordinatorLayout, "Note Id : "+String.valueOf(Value), Snackbar.LENGTH_LONG);
-                snackbar.show();*/
                 Cursor rs = mydb.getData(Value);
                 id_To_Update = Value;
                 rs.moveToFirst();
@@ -55,18 +57,46 @@ public class DisplayNote extends AppCompatActivity {
             }
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int Value = extras.getInt("id");
-            getMenuInflater().inflate(R.menu.display_menu, menu);
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+        // Fügt auch den Share-Icon der Action Bar hinzu
+        getMenuInflater().inflate(R.menu.display_menu, menu);
+
+        // Übergabe des Notiz-Texts in noteinfo als Text
+        String noteinfo = content.getText().toString();
+
+        // Holt das Menüeintrag-Objekt, das dem ShareActionProvider zugeordnet ist
+        MenuItem shareMenuItem = menu.findItem(R.id.share_note);
+
+        // Holt den ShareActionProvider über den Share-Menüeintrag
+        ShareActionProvider sAP;
+        sAP = (ShareActionProvider) MenuItemCompat.getActionProvider(shareMenuItem);
+
+        // Erzeugen des SEND-Intents mit noteinfo als Text
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        //noinspection deprecation
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Notiz: " + noteinfo);
+
+        // Der SEND-Intent wird an den ShareActionProvider angehangen
+        if (sAP != null ) {
+            sAP.setShareIntent(shareIntent);
+        } else {
+            String LOG_TAG = DisplayNote.class.getSimpleName();
+            Log.d(LOG_TAG, "Kein ShareActionProvider vorhanden!");
         }
+
         return true;
+
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
             case R.id.Delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(R.string.DeleteNote)
@@ -150,6 +180,7 @@ public class DisplayNote extends AppCompatActivity {
                     }
                 }
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

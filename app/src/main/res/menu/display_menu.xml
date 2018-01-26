@@ -4,11 +4,25 @@
 
     <item
         android:id="@+id/Save"
+        android:icon="@drawable/ic_save"
         android:orderInCategory="100"
         android:title="Sichern"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/Delete"
+        android:icon="@drawable/ic_delete"
+        android:iconTint="@color/cardview_light_background"
+        android:iconTintMode="multiply"
         android:orderInCategory="100"
-        android:title="Löschen"/>
+        android:title="Löschen"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/share_note"
+        android:title="@string/action_share_note"
+        android:icon="@drawable/ic_share_black_24dp"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass=
+            "android.support.v7.widget.ShareActionProvider" />
 </menu>

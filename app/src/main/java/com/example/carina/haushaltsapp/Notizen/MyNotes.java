@@ -1,12 +1,11 @@
 package com.example.carina.haushaltsapp.Notizen;
 
-import android.app.AlertDialog;
-import android.content.Context;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,20 +19,15 @@ import android.widget.TextView;
 
 import com.example.carina.haushaltsapp.R;
 
-//import android.support.design.widget.FloatingActionButton;
-
 public class MyNotes extends AppCompatActivity {
     private ListView obj;
     NDb mydb;
-   // FloatingActionButton btnadd;
     ListView mylist;
     Menu menu;
-    AlertDialog.Builder alertDialogBuilder;
-    AlertDialog alertDialog;
-    Context context = this;
     CoordinatorLayout coordinatorLayout;
     SimpleCursorAdapter adapter;
-    Snackbar snackbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +35,6 @@ public class MyNotes extends AppCompatActivity {
         setContentView(R.layout.notedisplay);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         mydb = new NDb(this);
-
-       /* btnadd = (FloatingActionButton) findViewById(R.id.btnadd);
-        btnadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle dataBundle = new Bundle();
-                dataBundle.putInt("id", 0);
-                Intent intent = new Intent(getApplicationContext(),
-                        DisplayNote.class);
-                intent.putExtras(dataBundle);
-                startActivity(intent);
-                finish();
-            }
-        });*/
         Cursor c = mydb.fetchAll();
         String[] fieldNames = new String[] { NDb.name, NDb._id, NDb.dates, NDb.remark };
         int[] display = new int[] { R.id.txtnamerow, R.id.txtidrow,
@@ -88,6 +68,8 @@ public class MyNotes extends AppCompatActivity {
         this.menu = menu;
         return true;
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -100,6 +82,9 @@ public class MyNotes extends AppCompatActivity {
                 intent.putExtras(dataBundle);
                 startActivity(intent);
                 finish();
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

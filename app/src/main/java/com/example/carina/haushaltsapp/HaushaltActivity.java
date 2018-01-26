@@ -1,10 +1,12 @@
 package com.example.carina.haushaltsapp;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.carina.haushaltsapp.Einkaufsliste.MyShopping;
 import com.example.carina.haushaltsapp.Notizen.MyNotes;
@@ -27,7 +29,7 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
         btnAusgaben = (Button) findViewById(button2);
         btnToDo = (Button) findViewById(button3);
         btnNotizen = (Button) findViewById(button4);
-        btnFun = (Button) findViewById(button5);
+        ImageButton btnFun = (ImageButton) findViewById(button5);
 
         btnEinkauf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,9 +62,10 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
         btnFun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startFun();
+                startMusik();
             }
         });
+
     }
 
 
@@ -93,8 +96,9 @@ private Button btnEinkauf, btnAusgaben, btnToDo, btnNotizen, btnFun;
                 new Intent(this, MyNotes.class));
     }
 
-    private void startFun() {
+    private void startMusik() {
         startActivity(
                 new Intent(this, Corc.class));
     }
+
 }

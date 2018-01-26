@@ -33,10 +33,15 @@
             android:layout_weight="4" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/button_add_product"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryB"
             android:text="@string/button_add_product"
-            android:id="@+id/button_add_product" />
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <ListView

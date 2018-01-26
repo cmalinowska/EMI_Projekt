@@ -5,14 +5,9 @@
 
     <item
         android:id="@+id/add"
-        android:title="Neu"
+        android:icon="@drawable/ic_add"
         android:orderInCategory="100"
-        app:showAsAction="always"
-        />
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:title="@string/new_note"
+        app:showAsAction="always" />
 
 </menu>
